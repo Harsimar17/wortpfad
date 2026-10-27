@@ -293,7 +293,8 @@ async function loadVocab() {
 function buildUnits(level) {
   const units = [];
   for (const cat of Object.keys(CATEGORY_NAMES)) {
-    const words = vocab.filter((w) => w.level === level && w.cat === cat);
+    // Reverse the JSON order so lessons start from the end of each list (bottom-to-top).
+    const words = vocab.filter((w) => w.level === level && w.cat === cat).reverse();
     if (!words.length) continue;
     const lessons = [];
     for (let i = 0; i < words.length; i += WORDS_PER_LESSON) {
