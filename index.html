@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Wortpfad</title>
+    <meta name="theme-color" content="#0f766e" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Home: stats + learning path -->
+    <section id="home" class="screen">
+      <header class="bar">
+        <h1>Wortpfad</h1>
+        <div class="stats">
+          <span id="stat-streak" title="Day streak">🔥 0</span>
+          <span id="stat-xp" title="Total XP">⚡ 0</span>
+          <span id="stat-hearts" title="Hearts">❤ 5</span>
+        </div>
+      </header>
+      <div class="accountbar">
+        <button id="account" type="button" hidden>Sign in with Google</button>
+        <span class="muted">Sign in to sync your progress across devices.</span>
+      </div>
+
+      <div class="goal">
+        <div class="goal-text"><span>Daily goal</span><span id="goal-label">0 / 20 XP</span></div>
+        <div class="meter"><div id="goal-fill"></div></div>
+      </div>
+
+      <div class="toolbar">
+        <label>Level
+          <select id="level-filter">
+            <option value="A1">A1</option>
+            <option value="A2">A2</option>
+            <option value="B1">B1</option>
+          </select>
+        </label>
+        <button id="practice-mistakes" type="button">Review due words <span id="mistake-count"></span></button>
+        <label class="switch"><input id="unlimited" type="checkbox" checked /> Unlimited hearts</label>
+      </div>
+
+      <p id="load-status" class="muted"></p>
+      <ol id="path" class="path" aria-label="Learning path"></ol>
+    </section>
+
+    <!-- Lesson -->
+    <section id="lesson" class="screen" hidden>
+      <header class="lesson-bar">
+        <button id="quit" class="icon" type="button" aria-label="Quit lesson">✕</button>
+        <div class="meter"><div id="lesson-fill"></div></div>
+        <span id="lesson-hearts" class="hearts">❤ 5</span>
+      </header>
+
+      <div id="combo" class="combo" hidden></div>
+      <h2 id="prompt" class="prompt"></h2>
+      <div id="stage" class="stage"></div>
+
+      <footer id="footer" class="footer">
+        <div id="feedback" class="feedback" hidden>
+          <strong id="feedback-title"></strong>
+          <span id="feedback-detail"></span>
+        </div>
+        <button id="check" class="primary" type="button" disabled>Check</button>
+      </footer>
+    </section>
+
+    <!-- Lesson end -->
+    <section id="end" class="screen" hidden>
+      <div class="end-card">
+        <h2 id="end-title">Lesson complete!</h2>
+        <div class="end-stats">
+          <div><span id="end-xp">0</span><small>XP</small></div>
+          <div><span id="end-acc">0%</span><small>Accuracy</small></div>
+          <div><span id="end-streak">0</span><small>Day streak</small></div>
+        </div>
+        <p id="end-note" class="muted"></p>
+        <button id="end-continue" class="primary" type="button">Continue</button>
+      </div>
+    </section>
+
+    <!-- Firebase (compat) for syncing progress to Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

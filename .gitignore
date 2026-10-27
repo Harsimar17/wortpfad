@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+.vscode/
+node_modules/
+
+# local-only notes
+ANALYSIS.md
+firestore-rule-to-add.txt
